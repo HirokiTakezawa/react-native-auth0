@@ -75,6 +75,7 @@ UIBackgroundTaskIdentifier taskId;
     SFSafariViewController *controller = [[SFSafariViewController alloc] initWithURL:url];
     controller.delegate = self;
     [self terminateWithError:RCTMakeError(@"Only one Safari can be visible", nil, nil) dismissing:YES animated:NO];
+    [[self topViewControllerWithRootViewController:window.rootViewController] setModalPresentationStyle:UIModalPresentationFullScreen];
     [[self topViewControllerWithRootViewController:window.rootViewController] presentViewController:controller animated:YES completion:nil];
     self.last = controller;
 }
